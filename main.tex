@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{graphicx} % for inserting images
+
+% for setting up figures
+\usepackage{subfigure}
+\usepackage{multirow}
+
+% set up the margins
+\usepackage[margin=1in, inner=1in]{geometry}
+\geometry{top=1in}
+
+% for math stuff
+% package for math stuff
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+% for captions
+\usepackage{caption}
+%\captionsetup[figure]{font=small}
+\usepackage{subcaption}
+
+% set up the packages for the references
+\usepackage[style=science]{biblatex}
+\addbibresource{refs.bib}
+
+% set up the title
+\title{Monitoring Committee Report: \\
+\large Decadal climate forecasting for the energy-sector}
+\author{Ben Hutchins}
+\date{June 2023}
+
+% set up the document
+\begin{document}
+
+% make the title
+\maketitle
+
+% give some background to the project in the introduction
+\section*{Introduction}
+
+As power systems transition towards a greater share of renewable energy sources, such as wind and solar PV, energy systems become increasingly vulnerable to climate variability \parencite{bloomfield2016quantifying}. As a result, there is need for longer range climate forecasting, such as seasonal and decadal forecasts, to inform both the operation and development of these changing power systems. Currently, seasonal forecasts are used to inform management decisions ahead of challenging periods for supply security, such as the winter period \parencite{national_grid_winter_2022}. However, (as far as we know) there is currently no operational usage of decadal (1-10 year) climate forecasts. Decadal forecasts seek to make predictions of the evolution of large-scale climate features over 1-10 years, a key timescale for power system planning and operation. These forecasts could be used, for example, to develop early warning systems for low-wind years, such as the those experienced in Europe during 2021 \parencite{copernicus_climate_change_service_c3s_european_2022}.\\
+
+In order for these decadal forecasts to have value, however, they must show skill. As decadal forecasts quickly lose their predictable signal from initialization, these forecasts are often very noisy \parencite{eade2014seasonal}. As a result, large multi-model ensembles are used to extract the predictable signal in decadal forecasts. However, the models often show underconfidence, where they underestimate the predictability of the real world \parencite{eade2014seasonal}. Despite this, recent techniques outlined in \cite{smith2020north}, such as lagged ensembles and NAO-matching, have improved the skill of decadal forecasts of large modes of variability, such as the NAO and AMV.\\
+
+As research has demonstrated the value of seasonal forecasts for the european energy-sector \parencite{clark2017skilful,thornton2019skilful}, there is potential for decadal forecasts to provide value at longer timescales, particularly with the recent findings of surprising skill in decadal NAO forecasts \parencite{smith2020north}.
+
+
+
+% updated literature review, giving background to the specific direction //
+% in which I am heading
+\section*{Literature Review}
+
+
+% what have I done so far
+% how about some plots showing the impact of NAO+/NAO- on European wind/solar
+% diagnosed from ERA5
+\section*{Decadal Forecasts of the NAO}
+
+
+
+% what am I going to do next
+\section*{Working Plan}
+
+
+% section detailing the repos in which my scripts are stored
+\subsection*{Code Availability}
+
+% print the references
+\printbibliography
+
+% end the file
+\end{document}
+
