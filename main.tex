@@ -103,18 +103,61 @@ The final part of the project will evaluate the final project aim by considering
 
 \subsection*{Initial Analysis - Decadal forecasts of the NAO}
 
+The initial analysis of this project has involved developing an understanding of the skill of decadal predictions. To acheive this, I have evaluated skill in decadal hindcasts of the NAO and compared my results to those in \cite{smith2020north,marcheggiani2023decadal}. These decadal hindcasts comprise of a 178-member multi-model ensemble containing output from the Decadal Climate Prediction Project component A for CMIP6 \parencite{boer2016decadal}. The models used are outlined in detail in the appendix (table \ref{tab:models}).//
+
+The NAO index is defined in the same way as \cite{smith2020north}; as the difference in mean sea level pressure between two grid boxes defined around the Azores and Iceland. The skill is assessed for years 2-9 of the forecast, focussing on the boreal winter period: December to March (DJFM). The year 2-9 period is chosen due to the different initialization times of different models; this ensures that the winter of year 2 is complete for all models \parencite{marcheggiani2023decadal}. The multi-model ensemble mean is calculated by first removing the (year 2-9 DJFM) model mean state for each ensemble member (and initialization scheme) from each model. Once the 178-member ensemble is constructed, an equally-weighted average of all the ensemble members is taken. In the same way as \cite{smith2020north,marcheggiani2023decadal}, a lagged ensemble is created by combining each hindcast with the previous three start dates, quadrupling the number of ensemble members from 178 to 712. For this "lagged" mean, the variance is adjusted by normalising the ensemble mean time series by its standard deviation.\\
+
+This skill of the DCPP-A output is assessed against the ERA5 reanalysis dataset between 1960 and 2014.
+% check this, not sure its accurate lol
+The NAO anomalies from the reanalysis are caculated in a similar way, by first removing the DJFM climatology before calculating an 8-year running mean to ensure the observations and model cover the same time period. Both the observations and models were interpolated onto a 2.5 degree by 2.5 degree grid before analysis, as in \cite{marcheggiani2023decadal}.
+% conservative remapping for ERA5
+% bilinear interpolation for model output
+
 \section*{Future Work}
 
 \subsection{Short-term}
 
 \subsection{Long-term}
 
-
 % section detailing the repos in which my scripts are stored
 \subsection*{Code Availability}
 
 % print the references
 \printbibliography
+
+\section*{Appendix}
+
+The models used, and their ensemble sizes are outlined in table \ref{tab:models}.
+
+
+% might want to tidy this up slightly
+% e.g. with full modelling center names
+% and references for each model
+\begin{table}[ht]
+    \centering
+    \caption{Model Information}
+    \begin{tabular}{lll}
+        \toprule
+        Model group & Model & Total ens. members \\
+        \midrule
+        NCC & NorCPM1 & 20 \\
+        NCAR & CESM1-1-CAM5-CMIP5 & 40 \\
+        IPSL & IPSL-CM6A-LR & 10 \\
+        MIROC & MIROC6 & 10 \\
+        CAS & FGOALS-f3-L & 9 \\
+        MPI-M/DWD & MPI-ESM1-2-LR & 16 \\
+        BCC & BCC-CSM2-MR & 8 \\
+        MPI-M & MPI-ESM1-2-HR & 10 \\
+        CCCma & CanESM5 & 20 \\
+        CMCC & CMCC-CM2-SR5 & 10 \\
+        EC-Earth-Consortium & EC-Earth3 & 15 \\
+        MOHC & HadGEM3-GC31-MM & 10 \\
+        \bottomrule
+    \end{tabular}
+    % create a label for this table
+    \label{tab:models}
+\end{table}
+
 
 % end the file
 \end{document}
