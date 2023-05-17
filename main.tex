@@ -7,7 +7,7 @@
 \usepackage{booktabs}
 
 % set up the margins
-\usepackage[margin=1in, inner=1in]{geometry}
+\usepackage[margin=1.2in, inner=1.2in]{geometry}
 \geometry{top=1in}
 
 % for math stuff
@@ -21,7 +21,7 @@
 % for captions
 \usepackage{caption}
 %\captionsetup[figure]{font=small}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 
 % set up the packages for the references
 \usepackage[style=science]{biblatex}
@@ -133,26 +133,17 @@ The estimates of skill shown are calculated for hindcasts initialized in years 1
 
 First, the years 2-9 prediction skill of DCPP-A models for the NAO index is evaluated.\\
 
-% figure showing side by side plots of NAO anomalies
-% on the left is raw ensemble output
+% reformat this figure completely
 \begin{figure}
-     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{plots/nao_ensemble_mean_and_individual_members.png}
-         \caption{Raw ensemble}
-         \label{fig:raw-ensemble-multi-model-mean}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{plots/nao_ensemble_mean_and_individual_members_lagged_and_adjusted.png}
-         \caption{Variance-adjusted and lagged}
-         \label{fig:lagged-ensemble-multi-model-mean}
-     \end{subfigure}
-     \caption{ a. Observed (black) and model-forecast (years 2-9; red) 8-year running means for the boreal winter (DJFM) NAO index. Red curve shows the equally-weighted ensemble mean of all 178 ensemble members. The thin grey lines show the output of each individual ensemble member. The red shading shows the 5\%-95\% confidence interval of all the ensemble members. The anomalies are calculated relative to the average of all year 2-9 boreal winter hindcasts for each model. Observations derive from ERA5. The ACC of the multi-model ensemble mean (for initialization period: 1961-2005) and the RPC are indicated b. As in a. but for the lagged ensemble mean which combines each hindcast with those from the previous three start dates (giving 712 ensemble members). The variance of the ensemble mean is adjusted by normalising by the standard deviation of the ensemble mean. The dashed yellow line shows the variance-adjusted ensemble mean, without lagging. The 5\%-95\% confidence interval is shown by the red shading and is diagnosed from the RMSE between the variance-adjusted ensemble members and the observations.}
-     \label{fig:multi-model-means}
+    \centering
+    \subfigure[Raw ensemble]{\includegraphics[width=0.45\textwidth]{plots/nao_ensemble_mean_and_individual_members.png}}
+    \subfigure[Variance-adjusted and lagged]{\includegraphics[width=0.45\textwidth]{plots/nao_ensemble_mean_and_individual_members_lagged_and_adjusted.png}}
+    \caption{ a. Observed (black) and model-forecast (years 2-9; red) 8-year running means for the boreal winter (DJFM) NAO index. Red curve shows the equally-weighted ensemble mean of all 178 ensemble members. The thin grey lines show the output of each individual ensemble member. The red shading shows the 5\%-95\% confidence interval of all the ensemble members. The anomalies are calculated relative to the average of all year 2-9 boreal winter hindcasts for each model. Observations derive from ERA5. The ACC of the multi-model ensemble mean (for initialization period: 1961-2005) and the RPC are indicated b. As in a. but for the lagged ensemble mean which combines each hindcast with those from the previous three start dates (giving 712 ensemble members). The variance of the ensemble mean is adjusted by normalising by the standard deviation of the ensemble mean. The dashed yellow line shows the variance-adjusted ensemble mean, without lagging. The 5\%-95\% confidence interval is shown by the red shading and is diagnosed from the RMSE between the variance-adjusted ensemble members and the observations.}
+    \label{fig:multi-model-means}
 \end{figure}
+
+% p values for this
+Figure \ref{fig:multi-model-means} shows the observed and model-forecast NAO index for the years 2-9 of the hindcasts. The observations show the decadal variability of the NAO, with a peak in positive NAO conditions around 1990 and a return to these conditions following 2010. While much of the variability is captured by individual ensemble members (thin grey lines), some of the extremes (late 1960, 1990, mid-2010s) aren't captured by the models in figure \ref*{fig:multi-model-means}a. The multi-model ensemble means for the raw ensemble show little predictable signal. Despite this, the models do show skill when predicting the phase of the variability, with significant correlation skill of the ensemble mean (ACC=0.52, P=???) with the observations. This result is comparable with those from \cite{smith2020north}, with ACC=0.48, P=0.03 and \cite{marcheggiani2023decadal} with ACC=0.55, P<0.01. This indicates that skilful model predictions of the NAO are possible, but are comprimised by the low signal-to-noise ratio (RPC=5.06). Therefore the variance must be calibrated to provide realistic, skilful forecasts. 
 
 
 \section*{Future Work}
