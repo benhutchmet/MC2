@@ -4,6 +4,7 @@
 % for setting up figures
 \usepackage{subfigure}
 \usepackage{multirow}
+\usepackage{booktabs}
 
 % set up the margins
 \usepackage[margin=1in, inner=1in]{geometry}
@@ -103,7 +104,7 @@ The final part of the project will evaluate the final project aim by considering
 
 \subsection*{Initial Analysis - Decadal forecasts of the NAO}
 
-The initial analysis of this project has involved developing an understanding of the skill of decadal predictions. To acheive this, I have evaluated skill in decadal hindcasts of the NAO and compared my results to those in \cite{smith2020north,marcheggiani2023decadal}. These decadal hindcasts comprise of a 178-member multi-model ensemble containing output from the Decadal Climate Prediction Project component A for CMIP6 \parencite{boer2016decadal}. The models used are outlined in detail in the appendix (table \ref{tab:models}).//
+The initial analysis of this project has involved developing an understanding of the skill of decadal predictions. To acheive this, I have evaluated skill in decadal hindcasts of the NAO and compared my results to those in \cite{smith2020north,marcheggiani2023decadal}. These decadal hindcasts comprise of a 178-member multi-model ensemble containing output from the Decadal Climate Prediction Project component A for CMIP6 \parencite{boer2016decadal}. The models used are outlined in detail in the appendix (table \ref{tab:models}).\\
 
 The NAO index is defined in the same way as \cite{smith2020north}; as the difference in mean sea level pressure between two grid boxes defined around the Azores and Iceland. The skill is assessed for years 2-9 of the forecast, focussing on the boreal winter period: December to March (DJFM). The year 2-9 period is chosen due to the different initialization times of different models; this ensures that the winter of year 2 is complete for all models \parencite{marcheggiani2023decadal}. The multi-model ensemble mean is calculated by first removing the (year 2-9 DJFM) model mean state for each ensemble member (and initialization scheme) from each model. Once the 178-member ensemble is constructed, an equally-weighted average of all the ensemble members is taken. In the same way as \cite{smith2020north,marcheggiani2023decadal}, a lagged ensemble is created by combining each hindcast with the previous three start dates, quadrupling the number of ensemble members from 178 to 712. For this "lagged" mean, the variance is adjusted by normalising the ensemble mean time series by its standard deviation.\\
 
@@ -112,6 +113,47 @@ This skill of the DCPP-A output is assessed against the ERA5 reanalysis dataset 
 The NAO anomalies from the reanalysis are caculated in a similar way, by first removing the DJFM climatology before calculating an 8-year running mean to ensure the observations and model cover the same time period. Both the observations and models were interpolated onto a 2.5 degree by 2.5 degree grid before analysis, as in \cite{marcheggiani2023decadal}.
 % conservative remapping for ERA5
 % bilinear interpolation for model output
+
+The skill is measured by evaluating Pearsons anomaly correlation coefficient (ACC) between the observations (ERA5) and the multi-model ensemble mean. To quantify signal to noise, the ratio of predictable components is caculated as in \cite{smith2020north,marcheggiani2023decadal}:
+
+% equation for the ratio of predictable components
+\begin{equation}
+    \text{RPC}=\frac{\sigma_{\mathrm{sig}}^{\mathrm{o}} / \sigma_{\text {tot }}^{\mathrm{o}}}{\sigma_{\mathrm{sig}}^{\mathrm{f}} / \sigma_{\text {tot }}^{\mathrm{f}}}=\frac{\mathrm{ACC}}{\sigma_{\mathrm{sig}}^{\mathrm{f}} / \sigma_{\text {tot }}^{\mathrm{f}}}
+    % include a label
+    \label{eq:rpc}
+\end{equation}
+
+Where $\sigma_{\mathrm{sig}}$ and $\sigma_{\mathrm{tot}}$ are the standard deviations of the signal and total (signal plus noise) standard deviations in the observations ("o") and reanalysis ("f"). A perfect model would have an RPC of one, indicating that all of the variance in the observations is explained by the model. We expect the RPC to be greater than one, as the models underestimate the predictability of the real world \parencite{smith2020north}. These models are expected to show underconfidence, where the ensemble mean agrees relatively well with the observations (show high correlation) but ensemble members agree less well with each other (low model signal to noise ratio).\\
+
+The estimates of skill shown are calculated for hindcasts initialized in years 1961-2005, which corresponds with the time period studied in \cite{smith2020north}. The initialization period beyond this, 2006-2014, was not considered in the skill scores as, similar to \cite{marcheggiani2023decadal}, I found that the skill of the models dropped off in this period.
+% need some skill scores to back this up really 
+% maybe a table?
+
+\subsubsection*{Results}
+
+First, the years 2-9 prediction skill of DCPP-A models for the NAO index is evaluated.\\
+
+% figure showing side by side plots of NAO anomalies
+% on the left is raw ensemble output
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{plots/nao_ensemble_mean_and_individual_members.png}
+         \caption{Raw ensemble}
+         \label{fig:raw-ensemble-multi-model-mean}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{plots/nao_ensemble_mean_and_individual_members_lagged_and_adjusted.png}
+         \caption{Variance-adjusted and lagged}
+         \label{fig:lagged-ensemble-multi-model-mean}
+     \end{subfigure}
+     \caption{ a. Observed (black) and model-forecast (years 2-9; red) 8-year running means for the boreal winter (DJFM) NAO index. Red curve shows the equally-weighted ensemble mean of all 178 ensemble members. The thin grey lines show the output of each individual ensemble member. The red shading shows the 5\%-95\% confidence interval of all the ensemble members. The anomalies are calculated relative to the average of all year 2-9 boreal winter hindcasts for each model. Observations derive from ERA5. The ACC of the multi-model ensemble mean (for initialization period: 1961-2005) and the RPC are indicated b. As in a. but for the lagged ensemble mean which combines each hindcast with those from the previous three start dates (giving 712 ensemble members). The variance of the ensemble mean is adjusted by normalising by the standard deviation of the ensemble mean. The dashed yellow line shows the variance-adjusted ensemble mean, without lagging. The 5\%-95\% confidence interval is shown by the red shading and is diagnosed from the RMSE between the variance-adjusted ensemble members and the observations.}
+     \label{fig:multi-model-means}
+\end{figure}
+
 
 \section*{Future Work}
 
