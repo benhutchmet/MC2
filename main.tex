@@ -143,7 +143,22 @@ First, the years 2-9 prediction skill of DCPP-A models for the NAO index is eval
 \end{figure}
 
 % p values for this
-Figure \ref{fig:multi-model-means} shows the observed and model-forecast NAO index for the years 2-9 of the hindcasts. The observations show the decadal variability of the NAO, with a peak in positive NAO conditions around 1990 and a return to these conditions following 2010. While much of the variability is captured by individual ensemble members (thin grey lines), some of the extremes (late 1960, 1990, mid-2010s) aren't captured by the models in figure \ref*{fig:multi-model-means}a. The multi-model ensemble means for the raw ensemble show little predictable signal. Despite this, the models do show skill when predicting the phase of the variability, with significant correlation skill of the ensemble mean (ACC=0.52, P=???) with the observations. This result is comparable with those from \cite{smith2020north}, with ACC=0.48, P=0.03 and \cite{marcheggiani2023decadal} with ACC=0.55, P<0.01. This indicates that skilful model predictions of the NAO are possible, but are comprimised by the low signal-to-noise ratio (RPC=5.06). Therefore the variance must be calibrated to provide realistic, skilful forecasts. 
+Figure \ref{fig:multi-model-means} shows the observed and model-forecast NAO index for the years 2-9 of the hindcasts. The observations show the decadal variability of the NAO, with a peak in positive NAO conditions around 1990 and a return to these conditions following 2010. While much of the variability is captured by individual ensemble members (thin grey lines), some of the extremes (late 1960, 1990, mid-2010s) aren't captured by the models in figure \ref*{fig:multi-model-means}a. The multi-model ensemble means for the raw ensemble show little predictable signal. Despite this, the models do show skill when predicting the phase of the variability, with significant correlation skill of the ensemble mean (ACC=0.52, P=???) with the observations. This result is comparable with those from \cite{smith2020north}, with ACC=0.48, P=0.03 and \cite{marcheggiani2023decadal} with ACC=0.55, P<0.01. This indicates that skilful model predictions of the NAO are possible, but are comprimised by the low signal-to-noise ratio (RPC=5.06). Therefore the variance must be calibrated to provide realistic, skilful forecasts.\\
+
+% also make sure to include p-value for this as well 
+% why might the signal to noise have dropped off by less?
+% why did out RPC not increase by so much between model and observations
+% why does the small signal to noise demonstrate that the predictable signal is %underestimated by the model?
+In figure \ref{fig:multi-model-means}b adjusting the variance alone (yellow line) captures more of the observed variability, but shows too much interannual variability. To smooth out this variability and reduce noise further, a lagged ensemble is constructed by taking the average of each forecast combined with the previous thre, quadrupling the number of ensemble members (to 712). The lagged and variance adjusted ensemble mean better captures the observed variabilty of the NAO, with ACC=0.70 and p=??, suggesting that the NAO is predictable on decadal timescales. This result is comparable with \cite{smith2020north,marcheggiani2023decadal}, with the former recording skill scores of ACC=0.79, P=0.02 (with HadSLP2 for observations) and the latter (with ERA5 observations) ACC=0.75, P<0.01. The RPC score also increases for the lagged ensemble mean, with RPC=6.81. Both \cite{smith2020north} and \cite{marcheggiani2023decadal} show a near doubling of their RPC scores for the lagged ensemble mean, which implies that the signal to noise ratio for our lagged ensemble reduced by less (relative to the raw ensemble) when compared to previous results. Despite the differences in RPC increase, the small signal-to-noise ratio demonstrates that the predictable signal is underestimated by the model ensemble. Therefore, large ensembles are necessary to extract skill in decadal hindcasts. 
+
+To investigate the skill of the individual models, decadal hindcasts were created.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/nao_ensemble_mean_and_individual_members_subplots.png}
+    \caption{Raw ensemble output for each of the 12 models used in the multi-model ensemble mean.}
+    \label{fig:ind-models-raw}
+\end{figure}
 
 
 \section*{Future Work}
