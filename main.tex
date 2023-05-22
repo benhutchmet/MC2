@@ -150,20 +150,41 @@ Figure \ref{fig:multi-model-means} shows the observed and model-forecast NAO ind
 % why did out RPC not increase by so much between model and observations
 % why does the small signal to noise demonstrate that the predictable signal is %underestimated by the model?
 In figure \ref{fig:multi-model-means}b adjusting the variance alone (yellow line) captures more of the observed variability, but shows too much interannual variability. To smooth out this variability and reduce noise further, a lagged ensemble is constructed by taking the average of each forecast combined with the previous thre, quadrupling the number of ensemble members (to 712). The lagged and variance adjusted ensemble mean better captures the observed variabilty of the NAO, with ACC=0.70 and p=??, suggesting that the NAO is predictable on decadal timescales. This result is comparable with \cite{smith2020north,marcheggiani2023decadal}, with the former recording skill scores of ACC=0.79, P=0.02 (with HadSLP2 for observations) and the latter (with ERA5 observations) ACC=0.75, P<0.01. The RPC score also increases for the lagged ensemble mean, with RPC=6.81. Both \cite{smith2020north} and \cite{marcheggiani2023decadal} show a near doubling of their RPC scores for the lagged ensemble mean, which implies that the signal to noise ratio for our lagged ensemble reduced by less (relative to the raw ensemble) when compared to previous results. Despite the differences in RPC increase, the small signal-to-noise ratio demonstrates that the predictable signal is underestimated by the model ensemble. Therefore, large ensembles are necessary to extract skill in decadal hindcasts. 
+% what about mentioning the NAO matching here
 
-To investigate the skill of the individual models, decadal hindcasts were created.
+To investigate the skill of the individual models, ensemble-mean hindcasts were created for each of the models used. 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{plots/nao_ensemble_mean_and_individual_members_subplots.png}
-    \caption{Raw ensemble output for each of the 12 models used in the multi-model ensemble mean.}
+    \caption{Identical to figure \ref*{fig:multi-model-means}a for each of the 12 models used in the multi-model ensemble mean.}
     \label{fig:ind-models-raw}
 \end{figure}
 
+From figure \ref*{fig:ind-models-raw} we find noticeable variations between the skill and RPC scores for the individual models. As expected, most of the model ensemble-means show more of the predictability of the real world, as demonstrated by the RPC scores showing values closer to one. Although this has not been evaluated through statistical testing, it appears that some of the models show approximately the right amount of predictability, with RPC values close to one, such as MPI-ESM-2-LR, BCC-CSM2-MR and HadGEM3-GC31-MM, with RPC values of 1.00, 0.88 and 0.62 respectively. As the ensemble size increases, however, in the case of CESM1 (40 ensemble members) the ensemble-mean shows underconfidence whereby the predictability of the real world is underestimated, with an RPC score of 2.29. Negative and zero RPC scores imply zero skill, so it would be worth investigating why NorCPM1 and FGOALS-f3-L show RPC scores of 0.0 and -0.12 respectively. In terms of correlation, we expect the models with the largest ensemble sizes to show the most skill, which is true in the case of CESM1, with ACC=0.47. However, this does not seem to hold in other cases, as both NorCPM1 and CanESM5, each with 20 ensemble members, show poor correlation skill, with ACC = -0.03 and 0.12 respectively. While other 10 and 16 member ensembles appear to show more skill, with ACC scores of 0.34, 0.44 and 0.30 respectively for BCC-CSM2-MR and the MPI-M models (HR - 10 members, LR - 16 members). There is no apparent correlation skill for the FGOALS-f3-L or NorCPM1 models; the reasons for this should be explored. Lagging each of the models and adjusting the variance changes these results substantially, as shown in the appendix in figure \ref{fig:ind-models-lag-adjust}.  
 
 \section*{Future Work}
 
+Future work is broken down into short-term goals and long-term targets. 
+
 \subsection{Short-term}
+
+\begin{itemize}
+    \item Explore how skill in decadal forecasts of large-scale features, such as the NAO, can be enhanced through different techniques.
+    \begin{itemize}
+        \item By using NAO matching, as in \cite{smith2020north}, to sub-select a smaller set of members from the ensemble which have the required NAO magnitude. This increases the signal of the sub-selected ensemble mean.
+        \item By considering the fidelity of the individual models, in a similar way to \cite{gonzalez2016long}, to identify the most skillful systems to be used in the multi-model mean.
+        \item By using sequential learning algorithms, as detailed in \cite{gonzalez2021new}, which optimize a set of weighted predictors (in this case models) for skill at each time step.
+    \end{itemize}
+    \item Consider the spatial variability of decadal forecast skill for a range of variables over the North Atlantic for different seasons by plotting skill maps, similar to figure 1 in \cite{smith2020north}. The following variables will be considered:
+    \begin{itemize}
+        \item Mean sea level pressure;
+        \item Surface temperature;
+        \item Surface wind speeds;
+        \item incoming solar radiation.
+    \end{itemize}
+    \item Using the skill maps, evaluate the decadal predictability of the East Atlantic pattern, in a similar way to the seasonal methodology of \cite{thornton2023seasonal}.
+\end{itemize}
 
 \subsection{Long-term}
 
@@ -205,6 +226,15 @@ The models used, and their ensemble sizes are outlined in table \ref{tab:models}
     % create a label for this table
     \label{tab:models}
 \end{table}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/nao_ensemble_mean_and_individual_members_lagged_and_adjusted.png}
+    \caption{Identical to figure \ref*{fig:multi-model-means}b for each of the 12 models used in the multi-model ensemble mean.}
+    \label{fig:ind-models-lag-adjust}
+\end{figure}
+
 
 
 % end the file
